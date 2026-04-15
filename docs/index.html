@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Freedom by Design v2 | Preview</title>
+  <meta name="description" content="Visual preview of Freedom by Design v2 — Tracy Harris Co in DESIGN.v4 branding." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --deep-teal:   #233635;
+      --mid-teal:    #324b4a;
+      --canvas:      #f6f4f1;
+      --charcoal:    #313131;
+      --sage:        #6e8e77;
+      --sage-dark:   #5a7a63;
+      --sage-light:  #8aab92;
+      --text-on-dark:        rgba(246, 244, 241, 1.0);
+      --text-on-dark-muted:  rgba(246, 244, 241, 0.7);
+      --text-on-dark-ghost:  rgba(246, 244, 241, 0.4);
+      --border-dark:  rgba(246, 244, 241, 0.12);
+      --border-light: rgba(49, 49, 49, 0.12);
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --duration: 500ms;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--charcoal);
+      background: var(--canvas);
+      -webkit-font-smoothing: antialiased;
+    }
+    .preview-banner {
+      position: fixed; top: 0; left: 0; right: 0;
+      padding: 10px 20px;
+      background: rgba(35, 54, 53, 0.96);
+      color: var(--canvas);
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      z-index: 100;
+      border-bottom: 1px solid var(--border-dark);
+    }
+    .preview-banner a { color: var(--sage-light); text-decoration: none; }
+
+    .wrap {
+      max-width: 1280px; margin: 0 auto;
+      padding-left: clamp(24px, 5vw, 48px);
+      padding-right: clamp(24px, 5vw, 48px);
+    }
+    .wrap.narrow { max-width: 776px; }
+    .label {
+      font-family: 'DM Mono', monospace;
+      font-weight: 500; font-size: 12px;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      line-height: 1.5; color: var(--sage); margin-bottom: 16px; display: block;
+    }
+    .display {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(44px, 7.5vw, 90px);
+      line-height: 1.0; letter-spacing: -0.03em;
+      color: var(--canvas); margin-bottom: 28px;
+    }
+    .display em, .h2 em, .h3 em { font-style: italic; }
+    .h2 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 1.05; letter-spacing: -0.02em;
+    }
+    .h3 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(22px, 2.5vw, 28px);
+      line-height: 1.2;
+    }
+    .lead {
+      font-size: 18px; line-height: 1.7;
+      color: var(--text-on-dark-muted);
+      max-width: 620px; margin-bottom: 48px;
+    }
+    .body { font-size: 16px; line-height: 1.75; margin-bottom: 20px; }
+    .body-lead { font-size: 18px; line-height: 1.7; }
+
+    .btn {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500; font-size: 13px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; text-align: center;
+      padding: 18px 38px; border-radius: 100px;
+      border: none; cursor: pointer;
+      transition: all var(--duration) var(--ease);
+      line-height: 1;
+    }
+    .btn-primary { background: var(--sage); color: var(--canvas); }
+    .btn-primary:hover { background: var(--sage-dark); transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent; color: var(--canvas);
+      border: 1.5px solid rgba(246, 244, 241, 0.3);
+    }
+    .btn-ghost:hover {
+      border-color: var(--sage); color: var(--sage-light);
+      background: rgba(110, 142, 119, 0.1);
+    }
+
+    .nav {
+      position: fixed; top: 40px; left: 0; right: 0;
+      z-index: 50; padding: 20px 0;
+      background: rgba(35, 54, 53, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 48px);
+    }
+    .logo {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 22px; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--canvas); text-decoration: none;
+    }
+    .nav-cta {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500; font-size: 12px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--canvas); text-decoration: none;
+      padding: 10px 22px; border-radius: 100px;
+      border: 1.5px solid rgba(246, 244, 241, 0.3);
+      transition: all var(--duration) var(--ease);
+    }
+    .nav-cta:hover { border-color: var(--sage); color: var(--sage-light); }
+
+    .section { padding: clamp(80px, 12vw, 160px) 0; }
+    .section.dark { background: var(--deep-teal); color: var(--text-on-dark); }
+    .section.light { background: var(--canvas); color: var(--charcoal); }
+
+    .hero {
+      position: relative; overflow: hidden;
+      background: var(--deep-teal); color: var(--text-on-dark);
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 220px 0 160px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(circle at 25% 30%, rgba(110, 142, 119, 0.15), transparent 55%),
+        radial-gradient(circle at 80% 75%, rgba(138, 171, 146, 0.08), transparent 55%);
+    }
+    .hero-inner { position: relative; z-index: 2; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 120px; }
+    .stats-row {
+      display: flex; flex-wrap: wrap; gap: 80px;
+      padding-top: 40px; border-top: 1px solid var(--border-dark);
+      max-width: 780px;
+    }
+    .stat {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(44px, 5vw, 72px); line-height: 1;
+      color: var(--canvas); letter-spacing: -0.03em;
+    }
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--sage);
+      margin-top: 8px; display: block;
+    }
+
+    .types-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px; max-width: 1180px; margin: 0 auto;
+    }
+    .type-card {
+      background: var(--mid-teal);
+      border: 1px solid var(--border-dark);
+      border-radius: 14px; padding: 40px 28px;
+      transition: all var(--duration) var(--ease);
+    }
+    .type-card:hover {
+      border-color: var(--sage);
+      transform: translateY(-4px);
+    }
+    .type-pct {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 64px; line-height: 1;
+      color: var(--sage-light); margin-bottom: 12px;
+      letter-spacing: -0.03em;
+    }
+    .type-card h3 { color: var(--canvas); margin-bottom: 10px; }
+    .type-card p {
+      color: var(--text-on-dark-muted);
+      font-size: 15px; line-height: 1.7;
+    }
+
+    .quote {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(28px, 3.5vw, 48px);
+      line-height: 1.15; letter-spacing: -0.02em;
+      color: var(--charcoal);
+      margin: 24px 0 48px; padding: 0; border: none;
+    }
+    .sign-off {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic; font-size: 22px;
+      color: var(--charcoal); margin-top: 32px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px; margin-bottom: 48px;
+    }
+    @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-brand {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 28px; letter-spacing: 0.04em;
+      color: var(--canvas); margin-bottom: 8px;
+    }
+    .trademark {
+      font-size: 0.55em; vertical-align: super;
+      color: var(--sage); margin-left: 2px;
+    }
+    .footer-tagline {
+      color: var(--text-on-dark-muted); font-size: 14px;
+      line-height: 1.6; max-width: 320px;
+    }
+    .footer-label {
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 16px;
+    }
+    .footer-links { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      color: var(--text-on-dark-muted); font-size: 14px;
+      text-decoration: none; transition: color var(--duration) var(--ease);
+    }
+    .footer-links a:hover { color: var(--sage); }
+    .footer-bottom {
+      padding-top: 24px;
+      border-top: 1px solid var(--border-dark);
+      font-size: 12px; color: var(--text-on-dark-ghost);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="preview-banner">
+    Visual preview · not the live app · repo: <a href="https://github.com/purepurposekh/freedom-by-design-v2" target="_blank">github.com/purepurposekh/freedom-by-design-v2</a>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="logo">Tracy Harris</a>
+      <a href="#" class="nav-cta">Take the assessment</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="wrap hero-inner">
+      <span class="label">A Freedom Filled® experience</span>
+      <h1 class="display">
+        What does your Human Design<br />
+        say about the business you were <em>meant</em> to build?
+      </h1>
+      <p class="lead">
+        Tracy Harris uses Human Design as one of many tools to help women build sustainable, freedom-filled businesses. In under 3 minutes, discover your type and the Freedom Strategy that fits the way you were designed to work.
+      </p>
+      <div class="hero-cta">
+        <a href="#types" class="btn btn-primary">Start the assessment</a>
+        <a href="#premise" class="btn btn-ghost">How it works</a>
+      </div>
+      <div class="stats-row">
+        <div>
+          <div class="stat">3 min</div>
+          <span class="stat-label">Quick assessment</span>
+        </div>
+        <div>
+          <div class="stat">5</div>
+          <span class="stat-label">Human Design types</span>
+        </div>
+        <div>
+          <div class="stat">1</div>
+          <span class="stat-label">Strategy built for you</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREMISE -->
+  <section class="section light" id="premise">
+    <div class="wrap narrow">
+      <span class="label">The premise</span>
+      <h2 class="h2" style="margin-bottom: 24px;">
+        Your Human Design isn&apos;t a personality label. It&apos;s a <em>blueprint</em> for how you&apos;re wired to work.
+      </h2>
+      <p class="body">
+        Most business advice is written for a default person who doesn&apos;t exist. Hustle harder. Wake at 5am. Post every day. Grind until it clicks.
+      </p>
+      <p class="body">
+        Human Design says the opposite. You have a specific energy type. A specific decision-making authority. A profile that describes how you learn, lead, and connect. When your business is built against your design, it feels heavy and extractive. When it&apos;s built with it, it feels generative and sustainable.
+      </p>
+      <p class="body body-lead">
+        This assessment reveals your type, your strategy, and the one shift that changes how you show up in your business. It takes three minutes. The birth data is what makes it real.
+      </p>
+    </div>
+  </section>
+
+  <!-- TYPES -->
+  <section class="section dark" id="types">
+    <div class="wrap">
+      <span class="label" style="text-align: center; display: block;">Five types</span>
+      <h2 class="h2" style="color: var(--canvas); text-align: center; margin-bottom: 80px;">
+        One of these is how you&apos;re designed to build.
+      </h2>
+      <div class="types-grid">
+        <div class="type-card">
+          <div class="type-pct">8%</div>
+          <span class="stat-label" style="margin-bottom: 18px;">of the population</span>
+          <h3 class="h3">Manifestor</h3>
+          <p>Initiators. You start things others finish. Strategy: inform before you move. Business strength: creating from nothing.</p>
+        </div>
+        <div class="type-card">
+          <div class="type-pct">37%</div>
+          <span class="stat-label" style="margin-bottom: 18px;">of the population</span>
+          <h3 class="h3">Generator</h3>
+          <p>Life-force workers. Respond, then commit. Your sacral response is your business compass. Mastery is the play.</p>
+        </div>
+        <div class="type-card">
+          <div class="type-pct">33%</div>
+          <span class="stat-label" style="margin-bottom: 18px;">of the population</span>
+          <h3 class="h3">Manifesting Generator</h3>
+          <p>Speed and multi-passion. Build one vehicle for all of it. Your trap: starting everything, finishing three.</p>
+        </div>
+        <div class="type-card">
+          <div class="type-pct">20%</div>
+          <span class="stat-label" style="margin-bottom: 18px;">of the population</span>
+          <h3 class="h3">Projector</h3>
+          <p>Wisdom-holders. Wait for the invitation. Not built for hustle, built for insight. Business around wisdom, not hours.</p>
+        </div>
+        <div class="type-card">
+          <div class="type-pct">1%</div>
+          <span class="stat-label" style="margin-bottom: 18px;">of the population</span>
+          <h3 class="h3">Reflector</h3>
+          <p>Mirrors of community. 28-day cycles for decisions. Build a business that flows with the moon, not against it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACY VOICE -->
+  <section class="section light">
+    <div class="wrap narrow">
+      <span class="label">A note from Tracy</span>
+      <blockquote class="quote">
+        The first time I had my chart read, I cried. Not because it was dramatic. Because it finally explained why the things that had felt wrong, had felt wrong.
+      </blockquote>
+      <p class="body">Your design isn&apos;t a cage. It&apos;s permission.</p>
+      <p class="body">
+        Permission to stop forcing yourself into someone else&apos;s business model. Permission to build at the pace your energy can actually sustain. Permission to lead in the way you&apos;re quietly, already, best at.
+      </p>
+      <p class="body">Take the three minutes. See what your design has been trying to tell you all along.</p>
+      <p class="sign-off">Xx Tracy</p>
+      <div style="margin-top: 48px;">
+        <a href="#" class="btn btn-primary">Reveal my Freedom Blueprint</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="section dark" style="padding-top: 80px; padding-bottom: 32px;">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand">Tracy Harris<span class="trademark">®</span></p>
+          <p class="footer-tagline">Freedom Filled® Business for women ready to build by design.</p>
+        </div>
+        <div>
+          <p class="footer-label">Explore</p>
+          <ul class="footer-links">
+            <li><a href="https://tracyharris.co">Home</a></li>
+            <li><a href="https://tracyharris.co/ffb">FFB Mentorship</a></li>
+            <li><a href="https://tracyharris.co/podcast">Podcast</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-label">Designed with</p>
+          <ul class="footer-links">
+            <li>Instrument Serif</li>
+            <li>DM Sans</li>
+            <li>DM Mono</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 Tracy Harris Co. Freedom Filled® is a registered trademark. Human Design method referenced under fair use.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
