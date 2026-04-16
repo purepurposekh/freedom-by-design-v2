@@ -1,34 +1,26 @@
 import type { Metadata } from 'next';
-import { Instrument_Serif, DM_Sans, DM_Mono } from 'next/font/google';
+import { Poppins, Public_Sans } from 'next/font/google';
 import './globals.css';
 
-const dmSans = DM_Sans({
-  variable: '--font-dm-sans',
+const poppins = Poppins({
+  variable: '--font-poppins',
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
-  style: ['normal', 'italic'],
+  weight: ['400', '500', '600'],
 });
 
-const dmMono = DM_Mono({
-  variable: '--font-dm-mono',
+const publicSans = Public_Sans({
+  variable: '--font-public-sans',
   subsets: ['latin'],
   weight: ['400', '500'],
 });
 
-const instrumentSerif = Instrument_Serif({
-  variable: '--font-instrument-serif',
-  subsets: ['latin'],
-  weight: ['400'],
-  style: ['normal', 'italic'],
-});
-
 export const metadata: Metadata = {
-  title: 'Freedom by Design | Tracy Harris Co',
+  title: 'Freedom by Design | Tracy Harris',
   description:
     'What does your Human Design say about the business you were meant to build? Tracy Harris maps your design to a Freedom Filled strategy.',
   keywords: ['Human Design', 'business strategy', 'Tracy Harris', 'Freedom Filled', 'entrepreneur'],
   openGraph: {
-    title: 'Freedom by Design | Tracy Harris Co',
+    title: 'Freedom by Design | Tracy Harris',
     description: 'Discover the business strategy written in your Human Design chart.',
     type: 'website',
   },
@@ -40,10 +32,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${dmSans.variable} ${dmMono.variable} ${instrumentSerif.variable} h-full`}
-    >
+    <html lang="en" className={`${poppins.variable} ${publicSans.variable} h-full`}>
+      <head>
+        {/* Showit-hosted brand fonts */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              @font-face {
+                font-family: 'Editors Note Regular';
+                src: url('https://static.showit.co/file/TvhrrI7NQuaBtkycz2Vf9Q/shared/editors_note-regular.woff') format('woff');
+                font-display: swap;
+              }
+              @font-face {
+                font-family: 'Editors Note Light Italic';
+                src: url('https://static.showit.co/file/A4oH9ACtQ4OLBZLd7GAE3Q/shared/editor_snote-lightitalic.woff') format('woff');
+                font-display: swap;
+              }
+              @font-face {
+                font-family: 'Chic Societe Script';
+                src: url('https://static.showit.co/file/Jmg9m0ObRte7TbO4pWwW-A/shared/chicsocietescript.woff') format('woff');
+                font-display: swap;
+              }
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-full antialiased">
         {children}
       </body>

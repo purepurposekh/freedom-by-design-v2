@@ -1,144 +1,171 @@
 import Link from 'next/link';
 
+const LOGO = 'https://static.showit.co/200/IBXs7NIvn4a1rU1r2lbrLQ/173187/th_logos_t_navy-09.png';
+const TRACY_HERO = 'https://static.showit.co/800/aHJ_7e00RV-MrsdMdJddaQ/173187/th-pb-2024-outfit1-25.jpg';
+const TRACY_VOICE = 'https://static.showit.co/800/ncWFBwItLHrcgwkcAe-zZQ/173187/tracy_014.jpg';
+const ENV_PHOTO = 'https://static.showit.co/800/Sgs6lqwBQVGiD4pFd2x4_g/173187/helena-lopes-rgpqnvoicdg-unsplash.jpg';
+
 export default function Home() {
   return (
-    <div className="min-h-screen bg-canvas text-charcoal">
+    <div className="min-h-screen" style={{ background: 'var(--cream)', color: 'var(--near-black)' }}>
       {/* NAV */}
       <nav className="v4-nav">
         <div className="v4-nav-inner">
-          <Link href="/" className="v4-logo">Tracy Harris</Link>
+          <Link href="/" className="v4-logo">
+            <img src={LOGO} alt="Tracy Harris" />
+          </Link>
           <Link href="/quiz" className="v4-nav-link">Take the assessment</Link>
         </div>
       </nav>
 
-      {/* HERO */}
-      <section
-        className="v4-section dark relative overflow-hidden"
-        style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '180px' }}
-      >
+      {/* HERO — cream, split with Tracy portrait */}
+      <section style={{ background: 'var(--cream)', padding: '60px 0 100px' }}>
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="v4-wrap"
           style={{
-            background:
-              'radial-gradient(circle at 25% 30%, rgba(110, 142, 119, 0.15), transparent 55%), radial-gradient(circle at 80% 75%, rgba(138, 171, 146, 0.08), transparent 55%)',
+            display: 'grid',
+            gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)',
+            gap: '80px',
+            alignItems: 'center',
           }}
-        />
-        <div className="v4-wrap relative z-10">
-          <p className="v4-label">A Freedom Filled® experience</p>
-          <h1 className="v4-display" style={{ color: 'var(--canvas)', marginBottom: '28px' }}>
-            What does your Human Design<br />
-            say about the business you were <em>meant</em> to build?
-          </h1>
-          <p
-            className="v4-lead"
-            style={{ color: 'var(--text-on-dark-muted)', maxWidth: '620px', marginBottom: '48px' }}
-          >
-            Tracy Harris uses Human Design as one of many tools to help women build sustainable, freedom-filled businesses. In under 3 minutes, discover your type and the Freedom Strategy that fits the way you were designed to work.
-          </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginBottom: '120px' }}>
-            <Link href="/quiz" className="v4-btn v4-btn-primary">Start the assessment</Link>
-            <a href="#how" className="v4-btn v4-btn-ghost">How it works</a>
+        >
+          <div>
+            <span className="script-label">freedom by design</span>
+            <p className="v4-label" style={{ marginTop: '8px' }}>A Freedom Filled® experience</p>
+            <h1 className="heading-hero" style={{ marginBottom: '24px' }}>
+              What does your Human Design say about the business you were <em>meant</em> to build?
+            </h1>
+            <p className="v4-body" style={{ color: 'var(--dark-teal)', fontSize: '17px', lineHeight: '1.6', marginBottom: '32px' }}>
+              Tracy Harris uses Human Design as one of many tools to help women build sustainable, freedom-filled businesses. In under 3 minutes, discover your type and the Freedom Strategy that fits the way you were designed to work.
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginBottom: '48px' }}>
+              <Link href="/quiz" className="btn btn-sage">Start the assessment</Link>
+              <a href="#how" className="btn btn-outline">How it works</a>
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                gap: '60px',
+                paddingTop: '32px',
+                borderTop: '1px solid rgba(36,53,49,0.15)',
+                flexWrap: 'wrap',
+              }}
+            >
+              <div>
+                <div className="v4-stat">3 min</div>
+                <span className="v4-stat-label">Quick assessment</span>
+              </div>
+              <div>
+                <div className="v4-stat">5</div>
+                <span className="v4-stat-label">HD types</span>
+              </div>
+              <div>
+                <div className="v4-stat">1</div>
+                <span className="v4-stat-label">Strategy for you</span>
+              </div>
+            </div>
           </div>
-
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '80px',
-              paddingTop: '40px',
-              borderTop: '1px solid var(--border-dark)',
-              maxWidth: '780px',
-            }}
-          >
-            <div>
-              <div className="v4-stat" style={{ color: 'var(--canvas)' }}>3 min</div>
-              <div className="v4-stat-label">Quick assessment</div>
-            </div>
-            <div>
-              <div className="v4-stat" style={{ color: 'var(--canvas)' }}>5</div>
-              <div className="v4-stat-label">Human Design types</div>
-            </div>
-            <div>
-              <div className="v4-stat" style={{ color: 'var(--canvas)' }}>1</div>
-              <div className="v4-stat-label">Strategy built for you</div>
-            </div>
+          <div>
+            <img
+              src={TRACY_HERO}
+              alt="Tracy Harris"
+              style={{ width: '100%', height: '620px', objectFit: 'cover', objectPosition: 'center top' }}
+            />
           </div>
         </div>
       </section>
 
-      {/* PREMISE — the exhale */}
-      <section className="v4-section light" id="how">
+      {/* PREMISE — white, editorial */}
+      <section style={{ background: 'var(--white)', padding: '100px 0' }} id="how">
         <div className="v4-wrap narrow">
-          <p className="v4-label">The premise</p>
-          <h2 className="v4-h2" style={{ marginBottom: '24px' }}>
+          <span className="script-label">the premise</span>
+          <h2 className="heading-section" style={{ marginBottom: '32px' }}>
             Your Human Design isn&apos;t a personality label. It&apos;s a <em>blueprint</em> for how you&apos;re wired to work.
           </h2>
-          <p className="v4-body" style={{ marginBottom: '20px' }}>
+          <p className="body-text" style={{ color: 'var(--dark-teal)', fontSize: '17px', lineHeight: '1.75', marginBottom: '20px' }}>
             Most business advice is written for a default person who doesn&apos;t exist. Hustle harder. Wake at 5am. Post every day. Grind until it clicks.
           </p>
-          <p className="v4-body" style={{ marginBottom: '20px' }}>
+          <p className="body-text" style={{ color: 'var(--dark-teal)', fontSize: '17px', lineHeight: '1.75', marginBottom: '20px' }}>
             Human Design says the opposite. You have a specific energy type. A specific decision-making authority. A profile that describes how you learn, lead, and connect. When your business is built against your design, it feels heavy and extractive. When it&apos;s built with it, it feels generative and sustainable.
           </p>
-          <p className="v4-body v4-lead">
+          <p className="body-text" style={{ color: 'var(--dark-teal)', fontSize: '19px', lineHeight: '1.65', marginBottom: 0 }}>
             This assessment reveals your type, your strategy, and the one shift that changes how you show up in your business. It takes three minutes. The birth data is what makes it real.
           </p>
         </div>
       </section>
 
-      {/* TYPES — dark section with cards */}
-      <section className="v4-section dark">
-        <div className="v4-wrap">
-          <p className="v4-label" style={{ textAlign: 'center' }}>Five types</p>
+      {/* TYPES — dark teal, the one accent section */}
+      <section style={{ background: 'var(--dark-teal)', color: 'var(--white)', padding: '100px 0' }}>
+        <div className="v4-wrap" style={{ textAlign: 'center' }}>
+          <span className="script-label" style={{ color: 'var(--sage)' }}>five types</span>
           <h2
-            className="v4-h2"
-            style={{ color: 'var(--canvas)', textAlign: 'center', marginBottom: '80px' }}
+            className="heading-section"
+            style={{ color: 'var(--white)', marginBottom: '24px' }}
           >
-            One of these is how you&apos;re designed to build.
+            One of these is how you&apos;re designed to <em>build</em>.
           </h2>
+          <p
+            style={{
+              fontFamily: 'var(--font-poppins), sans-serif',
+              fontSize: '16px',
+              lineHeight: '1.7',
+              color: 'rgba(255,255,255,0.75)',
+              maxWidth: '560px',
+              margin: '0 auto 64px',
+            }}
+          >
+            Each type has a distinct strategy, energy, and way of making decisions. Your chart tells you which one you are.
+          </p>
           <div
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
               gap: '24px',
-              maxWidth: '1180px',
+              maxWidth: '1100px',
               margin: '0 auto',
+              textAlign: 'left',
             }}
           >
             {TYPES.map((t) => (
               <div
                 key={t.name}
                 style={{
-                  background: 'var(--mid-teal)',
-                  border: '1px solid var(--border-dark)',
-                  borderRadius: '14px',
-                  padding: '40px 28px',
-                  transition: 'all 500ms var(--ease)',
+                  border: '1px solid rgba(255,255,255,0.15)',
+                  padding: '40px 32px',
+                  background: 'rgba(255,255,255,0.02)',
+                  transition: 'border-color 0.3s ease',
                 }}
               >
                 <div
                   style={{
-                    fontFamily: 'var(--font-instrument-serif), Georgia, serif',
+                    fontFamily: "'Editors Note Regular', serif",
                     fontSize: '64px',
-                    lineHeight: '1',
-                    color: 'var(--sage-light)',
+                    lineHeight: 1,
+                    color: 'var(--sage)',
                     marginBottom: '12px',
-                    letterSpacing: '-0.03em',
                   }}
                 >
                   {t.pct}
                 </div>
-                <div className="v4-stat-label" style={{ marginBottom: '18px' }}>
-                  of the population
-                </div>
-                <h3 className="v4-h3" style={{ color: 'var(--canvas)', marginBottom: '10px' }}>
+                <span className="v4-stat-label" style={{ marginBottom: '18px' }}>of the population</span>
+                <h3
+                  style={{
+                    fontFamily: "'Editors Note Regular', serif",
+                    fontWeight: 400,
+                    fontSize: '32px',
+                    lineHeight: 1.1,
+                    color: 'var(--white)',
+                    marginBottom: '10px',
+                  }}
+                >
                   {t.name}
                 </h3>
                 <p
                   style={{
-                    color: 'var(--text-on-dark-muted)',
-                    fontFamily: 'var(--font-dm-sans), sans-serif',
+                    fontFamily: 'var(--font-poppins), sans-serif',
                     fontSize: '15px',
-                    lineHeight: '1.7',
+                    lineHeight: 1.65,
+                    color: 'rgba(255,255,255,0.75)',
                   }}
                 >
                   {t.gist}
@@ -149,145 +176,84 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TRACY VOICE */}
-      <section className="v4-section light">
-        <div className="v4-wrap narrow">
-          <p className="v4-label">A note from Tracy</p>
-          <blockquote style={{ margin: '24px 0 48px', padding: 0, border: 'none' }}>
+      {/* IMAGE BREAK */}
+      <section style={{ background: 'var(--cream)', lineHeight: 0 }}>
+        <img
+          src={ENV_PHOTO}
+          alt="Returning to centre"
+          style={{ width: '100%', height: '420px', objectFit: 'cover', display: 'block' }}
+        />
+      </section>
+
+      {/* TRACY VOICE — cream, split with photo */}
+      <section style={{ background: 'var(--white)', padding: '100px 0' }}>
+        <div
+          className="v4-wrap"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '42% 1fr',
+            gap: '60px',
+            alignItems: 'center',
+          }}
+        >
+          <div>
+            <img
+              src={TRACY_VOICE}
+              alt="Tracy Harris"
+              style={{
+                width: '100%',
+                height: '560px',
+                objectFit: 'cover',
+                objectPosition: 'center top',
+              }}
+            />
+          </div>
+          <div>
+            <span className="script-label">a note from Tracy</span>
             <p
               style={{
-                fontFamily: 'var(--font-instrument-serif), Georgia, serif',
-                fontStyle: 'italic',
-                fontSize: 'clamp(28px, 3.5vw, 48px)',
-                lineHeight: '1.15',
-                letterSpacing: '-0.02em',
-                color: 'var(--charcoal)',
+                fontFamily: "'Editors Note Regular', serif",
+                fontSize: 'clamp(32px, 3.8vw, 55px)',
+                lineHeight: 1.2,
+                color: 'var(--dark-teal)',
+                margin: '16px 0 32px',
               }}
             >
-              The first time I had my chart read, I cried. Not because it was dramatic. Because it finally explained why the things that had felt wrong, had felt wrong.
+              The first time I had my chart read, I cried. Not because it was dramatic. Because it finally explained why the things that had felt wrong, had felt <em style={{ fontFamily: "'Editors Note Light Italic', serif", fontStyle: 'italic' }}>wrong</em>.
             </p>
-          </blockquote>
-          <p className="v4-body" style={{ marginBottom: '20px' }}>
-            Your design isn&apos;t a cage. It&apos;s permission.
-          </p>
-          <p className="v4-body" style={{ marginBottom: '20px' }}>
-            Permission to stop forcing yourself into someone else&apos;s business model. Permission to build at the pace your energy can actually sustain. Permission to lead in the way you&apos;re quietly, already, best at.
-          </p>
-          <p className="v4-body">
-            Take the three minutes. See what your design has been trying to tell you all along.
-          </p>
-          <p
-            style={{
-              fontFamily: 'var(--font-instrument-serif), Georgia, serif',
-              fontStyle: 'italic',
-              fontSize: '22px',
-              color: 'var(--charcoal)',
-              marginTop: '32px',
-            }}
-          >
-            Xx Tracy
-          </p>
-          <div style={{ marginTop: '48px' }}>
-            <Link href="/quiz" className="v4-btn v4-btn-primary">
-              Reveal my Freedom Blueprint
-            </Link>
+            <p style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: '17px', lineHeight: 1.7, color: 'var(--dark-teal)', marginBottom: '20px' }}>
+              Your design isn&apos;t a cage. It&apos;s permission.
+            </p>
+            <p style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: '17px', lineHeight: 1.7, color: 'var(--dark-teal)', marginBottom: '20px' }}>
+              Permission to stop forcing yourself into someone else&apos;s business model. Permission to build at the pace your energy can actually sustain. Permission to lead in the way you&apos;re quietly, already, best at.
+            </p>
+            <p style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: '17px', lineHeight: 1.7, color: 'var(--dark-teal)', marginBottom: '32px' }}>
+              Take the three minutes. See what your design has been trying to tell you all along.
+            </p>
+            <p style={{ fontFamily: "'Editors Note Light Italic', serif", fontStyle: 'italic', fontSize: '24px', color: 'var(--dark-teal)', marginBottom: '32px' }}>
+              Xx Tracy
+            </p>
+            <Link href="/quiz" className="btn btn-sage">Reveal my Freedom Blueprint</Link>
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="v4-section dark" style={{ paddingTop: '80px', paddingBottom: '32px' }}>
-        <div className="v4-wrap">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '48px',
-              marginBottom: '48px',
-            }}
-          >
-            <div>
-              <p
-                style={{
-                  fontFamily: 'var(--font-instrument-serif), Georgia, serif',
-                  fontSize: '28px',
-                  letterSpacing: '0.04em',
-                  color: 'var(--canvas)',
-                  marginBottom: '8px',
-                }}
-              >
-                Tracy Harris
-                <span
-                  style={{
-                    fontSize: '0.55em',
-                    verticalAlign: 'super',
-                    color: 'var(--sage)',
-                    marginLeft: '2px',
-                  }}
-                >
-                  ®
-                </span>
-              </p>
-              <p
-                style={{
-                  color: 'var(--text-on-dark-muted)',
-                  fontSize: '14px',
-                  lineHeight: '1.6',
-                  maxWidth: '320px',
-                }}
-              >
-                Freedom Filled® Business for women ready to build by design.
-              </p>
-            </div>
-            <div>
-              <p className="v4-stat-label" style={{ marginTop: 0, marginBottom: '16px' }}>
-                Explore
-              </p>
-              <ul
-                style={{
-                  listStyle: 'none',
-                  padding: 0,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '10px',
-                }}
-              >
-                <li>
-                  <a
-                    href="https://tracyharris.co"
-                    style={{ color: 'var(--text-on-dark-muted)', fontSize: '14px', textDecoration: 'none' }}
-                  >
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://tracyharris.co/ffb"
-                    style={{ color: 'var(--text-on-dark-muted)', fontSize: '14px', textDecoration: 'none' }}
-                  >
-                    FFB Mentorship
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://tracyharris.co/podcast"
-                    style={{ color: 'var(--text-on-dark-muted)', fontSize: '14px', textDecoration: 'none' }}
-                  >
-                    Podcast
-                  </a>
-                </li>
-              </ul>
-            </div>
+      <footer style={{ background: 'var(--dark-teal)', padding: '40px 0', color: 'rgba(255,255,255,0.6)' }}>
+        <div
+          className="v4-wrap"
+          style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}
+        >
+          <div style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: '12px', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+            © 2026 Tracy Harris Co · Freedom Filled® is a registered trademark
           </div>
-          <div
-            style={{
-              paddingTop: '24px',
-              borderTop: '1px solid var(--border-dark)',
-              fontSize: '12px',
-              color: 'var(--text-on-dark-ghost)',
-            }}
-          >
-            © 2026 Tracy Harris Co. Freedom Filled® is a registered trademark. Human Design method referenced under fair use.
+          <div style={{ display: 'flex', gap: '24px' }}>
+            <a href="https://tracyharris.co" style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: '12px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)', textDecoration: 'none' }}>
+              tracyharris.co
+            </a>
+            <a href="https://instagram.com/tracyharrisco" style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: '12px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)', textDecoration: 'none' }}>
+              Instagram
+            </a>
           </div>
         </div>
       </footer>
@@ -296,29 +262,9 @@ export default function Home() {
 }
 
 const TYPES = [
-  {
-    name: 'Manifestor',
-    pct: '8%',
-    gist: 'Initiators. You start things others finish. Strategy: inform before you move. Business strength: creating from nothing.',
-  },
-  {
-    name: 'Generator',
-    pct: '37%',
-    gist: "Life-force workers. Respond, then commit. Your sacral response is your business compass. Mastery is the play.",
-  },
-  {
-    name: 'Manifesting Generator',
-    pct: '33%',
-    gist: 'Speed and multi-passion. Build one vehicle for all of it. Your trap: starting everything, finishing three.',
-  },
-  {
-    name: 'Projector',
-    pct: '20%',
-    gist: 'Wisdom-holders. Wait for the invitation. Not built for hustle, built for insight. Business around wisdom, not hours.',
-  },
-  {
-    name: 'Reflector',
-    pct: '1%',
-    gist: 'Mirrors of community. 28-day cycles for decisions. Build a business that flows with the moon, not against it.',
-  },
+  { name: 'Manifestor', pct: '8%', gist: 'Initiators. You start things others finish. Strategy: inform before you move. Business strength: creating from nothing.' },
+  { name: 'Generator', pct: '37%', gist: 'Life-force workers. Respond, then commit. Your sacral response is your business compass. Mastery is the play.' },
+  { name: 'Manifesting Generator', pct: '33%', gist: 'Speed and multi-passion. Build one vehicle for all of it. Your trap: starting everything, finishing three.' },
+  { name: 'Projector', pct: '20%', gist: 'Wisdom-holders. Wait for the invitation. Not built for hustle, built for insight. Business around wisdom, not hours.' },
+  { name: 'Reflector', pct: '1%', gist: 'Mirrors of community. 28-day cycles for decisions. Build a business that flows with the moon, not against it.' },
 ];
