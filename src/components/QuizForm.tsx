@@ -195,67 +195,59 @@ export default function QuizForm() {
 
   return (
     <div className="w-full max-w-lg mx-auto">
-      {/* Progress bar */}
-      <div className="mb-8">
-        <div className="flex justify-between text-xs text-brand-dark/60 mb-2">
+      <div className="qf-progress">
+        <div className="qf-progress__meta">
           <span>Step {step} of {TOTAL_STEPS}</span>
           <span>{Math.round(progress)}% complete</span>
         </div>
-        <div className="w-full bg-brand-parchment rounded-full h-2">
-          <div
-            className="bg-brand-dark h-2 rounded-full transition-all duration-500"
-            style={{ width: `${progress}%` }}
-          />
+        <div className="qf-progress__bar">
+          <div className="qf-progress__fill" style={{ width: `${progress}%` }} />
         </div>
       </div>
 
-      {/* Step content */}
-      <div className="bg-white rounded-2xl p-8 shadow-sm border border-brand-parchment">
+      <div className="qf-card">
         {step === 1 && (
           <div>
-            <h2 className="text-2xl font-semibold text-brand-dark mb-2">When were you born?</h2>
-            <p className="text-brand-dark/60 mb-6">Your birth date shapes your Human Design chart.</p>
+            <h2 className="qf-step__h">When were you <em>born</em>?</h2>
+            <p className="qf-step__sub">Your birth date shapes your Human Design chart.</p>
             <input
               type="date"
               value={birthDate}
               onChange={(e) => setBirthDate(e.target.value)}
-              className="w-full border border-brand-parchment rounded-xl px-4 py-3 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-dark bg-brand-bg"
+              className="qf-input"
             />
           </div>
         )}
 
         {step === 2 && (
           <div>
-            <h2 className="text-2xl font-semibold text-brand-dark mb-2">What time were you born?</h2>
-            <p className="text-brand-dark/60 mb-6">Even an approximate time helps. If unsure, check your birth certificate.</p>
+            <h2 className="qf-step__h">What <em>time</em> were you born?</h2>
+            <p className="qf-step__sub">Even an approximate time helps. If unsure, check your birth certificate.</p>
             <input
               type="time"
               value={birthTime}
               onChange={(e) => setBirthTime(e.target.value)}
               disabled={unknownTime}
-              className="w-full border border-brand-parchment rounded-xl px-4 py-3 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-dark bg-brand-bg disabled:opacity-40"
+              className="qf-input"
             />
-            <label className="flex items-center gap-3 mt-4 cursor-pointer">
+            <label className="qf-checkline">
               <input
                 type="checkbox"
                 checked={unknownTime}
                 onChange={(e) => setUnknownTime(e.target.checked)}
-                className="w-5 h-5 accent-brand-dark"
               />
-              <span className="text-brand-dark/70 text-sm">I don&apos;t know my exact birth time</span>
+              <span>I don&apos;t know my exact birth time</span>
             </label>
             {unknownTime && (
-              <p className="mt-3 text-sm text-brand-terracotta bg-brand-blush/20 rounded-lg px-4 py-2">
-                We&apos;ll use noon as a default. Some chart details may vary.
-              </p>
+              <p className="qf-note">We&apos;ll use noon as a default. Some chart details may vary.</p>
             )}
           </div>
         )}
 
         {step === 3 && (
           <div>
-            <h2 className="text-2xl font-semibold text-brand-dark mb-2">Where were you born?</h2>
-            <p className="text-brand-dark/60 mb-6">City, country or region is fine.</p>
+            <h2 className="qf-step__h">Where were you <em>born</em>?</h2>
+            <p className="qf-step__sub">City, country or region is fine.</p>
             <div className="relative" ref={dropdownRef}>
               <input
                 type="text"
@@ -265,15 +257,15 @@ export default function QuizForm() {
                   setSelectedPlace(null);
                 }}
                 placeholder="e.g. London, UK"
-                className="w-full border border-brand-parchment rounded-xl px-4 py-3 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-dark bg-brand-bg"
+                className="qf-input"
               />
               {showDropdown && geoResults.length > 0 && (
-                <ul className="absolute z-10 mt-1 w-full bg-white border border-brand-parchment rounded-xl shadow-lg overflow-hidden">
+                <ul className="qf-geo-dropdown">
                   {geoResults.map((place, i) => (
                     <li
                       key={i}
                       onClick={() => handlePlaceSelect(place)}
-                      className="px-4 py-3 hover:bg-brand-parchment cursor-pointer text-sm text-brand-dark truncate"
+                      className="qf-geo-item"
                     >
                       {place.displayName}
                     </li>
@@ -286,100 +278,91 @@ export default function QuizForm() {
 
         {step === 4 && (
           <div>
-            <h2 className="text-2xl font-semibold text-brand-dark mb-2">Where should we send your results?</h2>
-            <p className="text-brand-dark/60 mb-6">Your chart is ready. Enter your email and we will send the read.</p>
+            <h2 className="qf-step__h">Where should we send your <em>chart</em>?</h2>
+            <p className="qf-step__sub">Enter your email and we will send the read once the chart is calculated.</p>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
-              className="w-full border border-brand-parchment rounded-xl px-4 py-3 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-dark bg-brand-bg"
+              className="qf-input"
             />
-            <p className="text-xs text-brand-dark/40 mt-3">No spam. Just your results and occasional wisdom from Tracy.</p>
+            <p className="qf-step__sub" style={{ marginTop: 14, marginBottom: 0, fontSize: 13 }}>
+              No spam. Just your results and occasional wisdom from Tracy.
+            </p>
           </div>
         )}
 
         {step === 5 && (
           <div>
-            <h2 className="text-2xl font-semibold text-brand-dark mb-2">Tell us about your business</h2>
-            <p className="text-brand-dark/60 mb-6">This lets Tracy tailor the read to where you actually are.</p>
+            <h2 className="qf-step__h">Tell us about your <em>business</em></h2>
+            <p className="qf-step__sub">This lets Tracy tailor the read to where you actually are.</p>
 
-            <div className="mb-6">
-              <p className="text-sm font-medium text-brand-dark mb-3">Where are you right now?</p>
-              <div className="space-y-2">
-                {BUSINESS_STAGES.map((stage) => (
-                  <label key={stage} className="flex items-center gap-3 cursor-pointer group">
-                    <input
-                      type="radio"
-                      name="stage"
-                      value={stage}
-                      checked={businessStage === stage}
-                      onChange={() => setBusinessStage(stage)}
-                      className="w-4 h-4 accent-brand-dark"
-                    />
-                    <span className="text-sm text-brand-dark group-hover:text-brand-dark">{stage}</span>
-                  </label>
-                ))}
-              </div>
+            <p className="qf-radio-label">Where are you right now?</p>
+            <div className="qf-radio-group">
+              {BUSINESS_STAGES.map((stage) => (
+                <label
+                  key={stage}
+                  className={`qf-radio-row${businessStage === stage ? ' qf-radio-row--selected' : ''}`}
+                >
+                  <input
+                    type="radio"
+                    name="stage"
+                    value={stage}
+                    checked={businessStage === stage}
+                    onChange={() => setBusinessStage(stage)}
+                  />
+                  <span>{stage}</span>
+                </label>
+              ))}
             </div>
 
-            <div>
-              <p className="text-sm font-medium text-brand-dark mb-3">Your biggest challenge right now?</p>
-              <div className="space-y-2">
-                {CHALLENGES.map((challenge) => (
-                  <label key={challenge} className="flex items-center gap-3 cursor-pointer group">
-                    <input
-                      type="radio"
-                      name="challenge"
-                      value={challenge}
-                      checked={biggestChallenge === challenge}
-                      onChange={() => setBiggestChallenge(challenge)}
-                      className="w-4 h-4 accent-brand-dark"
-                    />
-                    <span className="text-sm text-brand-dark group-hover:text-brand-dark">{challenge}</span>
-                  </label>
-                ))}
-              </div>
+            <p className="qf-radio-label">Your biggest challenge right now?</p>
+            <div className="qf-radio-group">
+              {CHALLENGES.map((challenge) => (
+                <label
+                  key={challenge}
+                  className={`qf-radio-row${biggestChallenge === challenge ? ' qf-radio-row--selected' : ''}`}
+                >
+                  <input
+                    type="radio"
+                    name="challenge"
+                    value={challenge}
+                    checked={biggestChallenge === challenge}
+                    onChange={() => setBiggestChallenge(challenge)}
+                  />
+                  <span>{challenge}</span>
+                </label>
+              ))}
             </div>
           </div>
         )}
 
-        {/* Error message */}
-        {error && (
-          <p className="mt-4 text-sm text-red-600 bg-red-50 rounded-lg px-4 py-2">{error}</p>
-        )}
+        {error && <p className="qf-error">{error}</p>}
 
-        {/* Navigation buttons */}
-        <div className="flex gap-3 mt-8">
+        <div className="qf-actions">
           {step > 1 && (
-            <button
-              onClick={handleBack}
-              disabled={isLoading}
-              className="flex-1 py-3 rounded-xl border border-brand-parchment text-brand-dark font-medium hover:bg-brand-parchment transition-colors disabled:opacity-40"
-            >
+            <button onClick={handleBack} disabled={isLoading} className="qf-btn qf-btn--ghost">
               Back
             </button>
           )}
           {step < TOTAL_STEPS ? (
-            <button
-              onClick={handleNext}
-              className="flex-1 py-3 rounded-xl bg-brand-dark text-brand-bg font-medium hover:bg-brand-dark/90 transition-colors"
-            >
+            <button onClick={handleNext} className="qf-btn qf-btn--primary">
               Next
             </button>
           ) : (
             <button
               onClick={handleSubmit}
               disabled={isLoading}
-              className="flex-1 py-3 rounded-xl bg-brand-dark text-brand-bg font-medium hover:bg-brand-dark/90 transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
+              className="qf-btn qf-btn--primary"
             >
               {isLoading ? (
                 <>
-                  <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
+                  <svg className="animate-spin" width="16" height="16" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                   </svg>
-                  Calculating your chart...
+                  Calculating your chart
                 </>
               ) : (
                 'See my chart'
