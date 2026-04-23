@@ -287,7 +287,7 @@ export default function QuizForm() {
         {step === 4 && (
           <div>
             <h2 className="text-2xl font-semibold text-brand-dark mb-2">Where should we send your results?</h2>
-            <p className="text-brand-dark/60 mb-6">Your Freedom Blueprint is ready. Enter your email to receive it.</p>
+            <p className="text-brand-dark/60 mb-6">Your chart is ready. Enter your email and we will send the read.</p>
             <input
               type="email"
               value={email}
@@ -302,7 +302,7 @@ export default function QuizForm() {
         {step === 5 && (
           <div>
             <h2 className="text-2xl font-semibold text-brand-dark mb-2">Tell us about your business</h2>
-            <p className="text-brand-dark/60 mb-6">This helps Tracy personalise your Freedom Blueprint.</p>
+            <p className="text-brand-dark/60 mb-6">This lets Tracy tailor the read to where you actually are.</p>
 
             <div className="mb-6">
               <p className="text-sm font-medium text-brand-dark mb-3">Where are you right now?</p>
@@ -371,7 +371,7 @@ export default function QuizForm() {
             <button
               onClick={handleSubmit}
               disabled={isLoading}
-              className="flex-1 py-3 rounded-xl bg-brand-terracotta text-white font-medium hover:bg-brand-terracotta/90 transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
+              className="flex-1 py-3 rounded-xl bg-brand-dark text-brand-bg font-medium hover:bg-brand-dark/90 transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
             >
               {isLoading ? (
                 <>
@@ -382,7 +382,7 @@ export default function QuizForm() {
                   Calculating your chart...
                 </>
               ) : (
-                'Reveal My Freedom Blueprint'
+                'See my chart'
               )}
             </button>
           )}

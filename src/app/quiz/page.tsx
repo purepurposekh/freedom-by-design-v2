@@ -23,7 +23,7 @@ export default function QuizPage() {
         <div className="v4-wrap narrow" style={{ textAlign: 'center' }}>
           <span className="script-label">three minutes</span>
           <h1 className="heading-hero" style={{ margin: '12px 0 20px' }}>
-            Your <em>Freedom Blueprint</em>
+            Your Human Design, <em>read</em>.
           </h1>
           <p
             style={{
@@ -35,7 +35,7 @@ export default function QuizPage() {
               margin: '0 auto 56px',
             }}
           >
-            Birth data is what makes Human Design real. The more accurate your birth time, the more accurate your result. If you don&apos;t know it exactly, give your best guess, Tracy&apos;s Freedom Strategy still applies.
+            Enter your birth data. We calculate your chart and send you a read of what it means for the way you build, sell, and lead. The more accurate your birth time, the more accurate your chart. If you don&apos;t know it exactly, a best guess still works.
           </p>
           <div style={{ textAlign: 'left' }}>
             <QuizForm />
