@@ -2,6 +2,8 @@ import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
 import BlueprintClient from './BlueprintClient';
 
+export const runtime = 'edge';
+
 export default async function BlueprintPage({
   searchParams,
 }: {

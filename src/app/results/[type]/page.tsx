@@ -1,16 +1,10 @@
 import { redirect } from 'next/navigation';
 import ResultsClient from './ResultsClient';
 
-// Pre-generate all 5 type pages at build time
-export function generateStaticParams() {
-  return [
-    { type: 'manifestor' },
-    { type: 'generator' },
-    { type: 'manifesting-generator' },
-    { type: 'projector' },
-    { type: 'reflector' },
-  ];
-}
+// Must run on edge runtime for Cloudflare Pages compatibility.
+// generateStaticParams removed — page is now served on-demand at edge
+// rather than pre-rendered at build time.
+export const runtime = 'edge';
 
 export default async function ResultsPage({
   params,
